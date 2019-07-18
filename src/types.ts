@@ -97,3 +97,14 @@ export interface Service {
     retiredDevices: string[];
   }
 }
+
+export interface SupplyType {
+  id?: any;
+  name: string;
+}
+
+export interface Supply {
+  id?: any;
+  name: string;
+  type: SupplyType | string;
+}

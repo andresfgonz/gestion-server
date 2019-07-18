@@ -28,4 +28,16 @@ export class UserController extends AbstractController<UserModel> {
   getTechnicians(): Promise<User[]> {
     return this.model.find({ roles: '5ca9409bc3f5020ad6aeb3a7' }).exec();
   }
+
+  async getByDocument(document: string) {
+    if (document === '1234') {
+      return this.model.findOne({ username: 'LGonzalez' }).exec();
+    }
+
+    if (document === '5678') {
+      return this.model.findOne({ username: 'GabrielaGU' }).exec();
+    }
+
+    return null;
+  }
 }

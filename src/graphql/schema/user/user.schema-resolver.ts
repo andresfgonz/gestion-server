@@ -62,6 +62,15 @@ export class UserSchemaResolver {
     }
   }
 
+  @Mutation(returns => UserType, { nullable: true })
+  validateTech(
+    @Arg('documentNumber') documentNumber: string,
+    @Ctx() { controllers }: Context,
+  ){
+    const { userController } = controllers;
+    return userController.getByDocument(documentNumber);
+  }
+
   @FieldResolver()
   roles(@Root() user: User, @Ctx() { controllers }: Context): Promise<Role[]> {
     return controllers.roleController.getUserRoles(user.roles);
